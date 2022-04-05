@@ -1,0 +1,15 @@
+<% layout('layouts/boilerplate') %>
+<link href="/stylesheets/categories.css" rel="stylesheet" type="text/css">
+<main>
+    <h1 class='categories-s'>All Categories</h1>
+    <div class="container">
+    <div class="row">
+        <% for(let [index,value] of Allcategories.entries()){ %>
+        <div class="col-6">
+            <a class="category-span" href='/categories/<%=Allcategoriesquery[index]%>&&<%= value %> '><%= value %> </a>
+        </div>
+        <% } %>  
+    </div>
+</div>
+</main>
+<script src="/javascripts/categories.js"></script>
