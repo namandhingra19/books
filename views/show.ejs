@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+<link href="/stylesheets/show.css" rel="stylesheet" type="text/css">
+<main>
+    <div class="container">
+        <h1 class="title"><%= categoryvalue %> </h1>
+        <div class="row">
+            <% for(let item of resdd) {%> 
+                <div class="col-6">
+                    <div class="category-item">
+                    <div class="item-img">
+                        <% if(item.volumeInfo.imageLinks){ %>
+                            <img src="<%= item.volumeInfo.imageLinks.thumbnail %>" alt="" class="item-image" onclick="window.location.href='<%= item.volumeInfo.infoLink %>'">
+                        <% } %> 
+                    </div>
+                    <div class="item-data">
+                    <a href="<%= item.volumeInfo.infoLink %>" class="item-title"><%= item.volumeInfo.title %> </a>
+                    <% if(item.volumeInfo.authors){ %> 
+                    <% for(let author of item.volumeInfo.authors){ %>  
+                            <a href="/search/<%= author %>" class="item-author"><%= author %> </a>
+                    <% }%> 
+                    <% } %> 
+                    <br>
+                    <% if(item.volumeInfo.categories){ %> 
+                    <a href="/search/<%= item.volumeInfo.categories[0]%>" class="item-category"><%= item.volumeInfo.categories[0]%> </a>
+                    <% } %> 
+                    </div>
+                    </div>
+                </div>
+            <% } %> 
+        </div>
+    </div> 
+</main>
+<script src="/javascripts/show.js"></script>
